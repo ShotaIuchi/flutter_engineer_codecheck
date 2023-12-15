@@ -1,16 +1,65 @@
 # flutter_engineer_codecheck
 
-A new Flutter project.
+## メモ
 
-## Getting Started
+### Lint
 
-This project is a starting point for a Flutter application.
+- チェック
 
-A few resources to get you started if this is your first Flutter project:
+```
+$ flutter analyze
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 修正
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+$ dart fix --apply
+```
+
+### Test
+
+- 全部
+
+```
+$ cd <プロジェクトルート>
+$ ./run_test.sh
+```
+
+- unit / widget
+
+```
+$ flutter test
+```
+
+- integration
+
+```
+$ cd <プロジェクトルート>
+$ cd test_integration
+$ ./run.sh
+```
+
+## 留意
+
+- Lint 利用ライブラリ
+
+  - very_good_analysis 利用
+
+- Test 種別
+
+  - unit
+  - widget
+  - integration
+
+- GitHub Action 対応
+
+  - cache
+  - android build
+  - deploy (firebase app distribution)
+  - lint
+  - unit/widget test
+
+- GitHub Action 非対応
+
+  - ios build
+  - integration test
