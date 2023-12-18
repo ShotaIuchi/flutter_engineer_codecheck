@@ -2,6 +2,14 @@
 
 ## メモ
 
+### l10n
+
+- 生成
+
+```
+$ flutter pub run intl_utils:generate
+```
+
 ### Lint
 
 - チェック

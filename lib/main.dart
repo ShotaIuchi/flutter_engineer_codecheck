@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/navigation.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -44,15 +45,13 @@ class MyApp extends StatelessWidget {
       ),
       // ロケール設定
       localizationsDelegates: const [
+        S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       // 対応ロケール
-      supportedLocales: const [
-        Locale('en', ''),
-        Locale('ja', ''),
-      ],
+      supportedLocales: S.delegate.supportedLocales,
       // ナビゲーション
       routerConfig: router,
     );
