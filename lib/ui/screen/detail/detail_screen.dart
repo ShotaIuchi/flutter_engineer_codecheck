@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/navigation.dart';
 
 /// 詳細画面
@@ -22,7 +23,7 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('詳細画面:$path')),
+      appBar: AppBar(title: Text('${S.of(context).titleDetail}:$path')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

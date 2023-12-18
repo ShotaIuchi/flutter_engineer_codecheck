@@ -4,3 +4,7 @@ linter:
   rules:
     one_member_abstracts: false
     sort_pub_dependencies: false
+
+analyzer:
+  exclude:
+    - 'lib/generated/**'

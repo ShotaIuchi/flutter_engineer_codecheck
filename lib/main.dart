@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/navigation.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,12 +22,14 @@ class MyApp extends StatelessWidget {
       ),
     );
     return MaterialApp.router(
+      // ライトテーマ
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         appBarTheme: appBarTheme,
       ),
+      // ダークテーマ
       darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
@@ -39,6 +43,16 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      // ロケール設定
+      localizationsDelegates: const [
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      // 対応ロケール
+      supportedLocales: S.delegate.supportedLocales,
+      // ナビゲーション
       routerConfig: router,
     );
   }
