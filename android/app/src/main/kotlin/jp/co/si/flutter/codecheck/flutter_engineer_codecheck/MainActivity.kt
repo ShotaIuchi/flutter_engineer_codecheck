@@ -1,4 +1,4 @@
-package com.example.flutter_engineer_codecheck
+package jp.co.si.flutter.codecheck.flutter_engineer_codecheck
 
 import io.flutter.embedding.android.FlutterActivity
 
