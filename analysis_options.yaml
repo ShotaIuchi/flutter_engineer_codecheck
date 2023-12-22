@@ -10,5 +10,6 @@ analyzer:
     - 'lib/generated/**'
     - '**/*.freezed.dart'
     - '**/*.g.dart'
+    - '**/*.mocks.dart'
   errors:
     invalid_annotation_target: ignore
