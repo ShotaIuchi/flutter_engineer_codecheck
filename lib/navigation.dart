@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/detail/detail_screen.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-/// ナビゲーションハンドラ
-abstract class NavigationHandler {
-  /// ナビゲーション
-  /// path: パス
-  void navigate(String path);
-}
+/// ナビゲーションハンドラ(画面置換)プロバイダ
+final goNavigationHandlerProvider = Provider<NavigationHandler>(
+  (ref) => _GoNavigationHandler(),
+);
+
+/// ナビゲーションハンドラ(画面遷移)プロバイダ
+final pushNavigationHandlerProvider = Provider<NavigationHandler>(
+  (ref) => _PushNavigationHandler(),
+);
 
 /// ルーティングルール
 final router = GoRouter(
@@ -16,7 +20,7 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (BuildContext context, GoRouterState state) {
-        return SearchScreen(naviHandler: _PushNavigationHandler(context));
+        return const SearchScreen();
       },
     ),
     GoRoute(
@@ -25,10 +29,7 @@ final router = GoRouter(
         final path = state.uri.queryParameters['path'] ?? '';
         return CustomTransitionPage<void>(
           key: state.pageKey,
-          child: DetailScreen(
-            naviHandler: _PushNavigationHandler(context),
-            path: path,
-          ),
+          child: DetailScreen(path: path),
           barrierDismissible: true,
           barrierColor: Colors.transparent,
           opaque: false,
@@ -40,27 +41,26 @@ final router = GoRouter(
   ],
 );
 
-// ※ 画面置換の場合は、以下のコードを使用する
-// /// ナビゲーションハンドラ(画面置換)
-// class _GoNavigationHandler implements NavigationHandler {
-//   _GoNavigationHandler(this.context);
 
-//   final BuildContext context;
+/// ナビゲーションハンドラ
+abstract class NavigationHandler {
+  /// ナビゲーション
+  /// path: パス
+  void navigate(BuildContext context, String path);
+}
 
-//   @override
-//   void navigate(String path) {
-//     context.go(path);
-//   }
-// }
+/// ナビゲーションハンドラ(画面置換)
+class _GoNavigationHandler implements NavigationHandler {
+  @override
+  void navigate(BuildContext context, String path) {
+    context.go(path);
+  }
+}
 
 /// ナビゲーションハンドラ(画面遷移)
 class _PushNavigationHandler implements NavigationHandler {
-  _PushNavigationHandler(this.context);
-
-  final BuildContext context;
-
   @override
-  void navigate(String path) {
+  void navigate(BuildContext context, String path) {
     context.push(path);
   }
 }

@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/navigation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// 詳細画面
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends ConsumerWidget {
   /// コンストラクタ
-  /// naviHandler: ナビゲーションハンドラ
   /// path: パス
   /// key: キー
   const DetailScreen({
-    required this.naviHandler,
     required this.path,
     super.key,
   });
-
-  /// ナビゲーション
-  final NavigationHandler naviHandler;
 
   /// ID
   final String path;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final naviHandler = ref.watch(pushNavigationHandlerProvider);
     return Scaffold(
       appBar: AppBar(title: Text('${S.of(context).titleDetail}:$path')),
       body: Center(
@@ -29,15 +26,15 @@ class DetailScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => naviHandler.navigate('/detail?path=$path/a'),
+              onPressed: () => naviHandler.navigate(context, '/detail?path=$path/a'),
               child: const Text('a'),
             ),
             ElevatedButton(
-              onPressed: () => naviHandler.navigate('/detail?path=$path/b'),
+              onPressed: () => naviHandler.navigate(context, '/detail?path=$path/b'),
               child: const Text('b'),
             ),
             ElevatedButton(
-              onPressed: () => naviHandler.navigate('/detail?path=$path/c'),
+              onPressed: () => naviHandler.navigate(context, '/detail?path=$path/c'),
               child: const Text('c'),
             ),
           ],
