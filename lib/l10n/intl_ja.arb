@@ -2,5 +2,5 @@
     "@@locale": "ja",
     "titleSearch": "検索画面",
     "titleDetail": "詳細画面",
-    "buttonDetail": "詳細画面へ遷移"
+    "hintSearch": "検索ワードを入力してください"
 }

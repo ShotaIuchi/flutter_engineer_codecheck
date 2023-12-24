@@ -17,10 +17,10 @@ class AppLocalizations {
         desc: 'Title of Detail Screen',
       );
 
-  /// ボタン：詳細画面へ遷移
-  String get buttonDetail => Intl.message(
-        'Navigate to Detail Screen',
-        name: 'buttonDetail',
-        desc: 'Button of Navigate to Detail Screen',
+  /// 検索ヒント
+  String get hintSearch => Intl.message(
+        'Enter search word',
+        name: 'hintSearch',
+        desc: 'Hint of Search',
       );
 }
