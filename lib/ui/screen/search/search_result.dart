@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_engineer_codecheck/state/github/search_state_notifer.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_result_list.dart';
+import 'package:flutter_engineer_codecheck/ui/screen/search/state/search_state_notifer.dart';
 import 'package:flutter_engineer_codecheck/ui/widget/app_exception.dart';
 import 'package:flutter_engineer_codecheck/ui/widget/app_loading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

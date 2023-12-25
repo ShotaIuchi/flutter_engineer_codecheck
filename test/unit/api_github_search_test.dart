@@ -1,7 +1,7 @@
 import 'package:flutter_engineer_codecheck/api/api_search.dart';
 import 'package:flutter_engineer_codecheck/api/model/github/search/search_response.dart';
-import 'package:flutter_engineer_codecheck/state/github/search_state.dart';
-import 'package:flutter_engineer_codecheck/state/github/search_state_notifer.dart';
+import 'package:flutter_engineer_codecheck/ui/screen/search/state/search_state.dart';
+import 'package:flutter_engineer_codecheck/ui/screen/search/state/search_state_notifer.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:logger/logger.dart';

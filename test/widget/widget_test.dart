@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_engineer_codecheck/generated/l10n.dart';
-import 'package:flutter_engineer_codecheck/state/github/search_state.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/detail/detail_screen.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_app_bar.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_result_list.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_result_list_item.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_screen.dart';
+import 'package:flutter_engineer_codecheck/ui/screen/search/state/search_state.dart';
 import 'package:flutter_engineer_codecheck/ui/widget/app_exception.dart';
 import 'package:flutter_engineer_codecheck/ui/widget/app_icon.dart';
 import 'package:flutter_engineer_codecheck/ui/widget/app_loading.dart';
