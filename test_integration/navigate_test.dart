@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/main.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/detail/detail_screen.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/search/search_screen.dart';
@@ -44,48 +43,19 @@ void main() {
     // 遷移後は、詳細画面が表示される
     expect(find.byType(DetailScreen), findsOneWidget);
 
-    //// 詳細画面
-    expect(find.text('${S.current.titleDetail}:'), findsOneWidget);
-    expect(find.text('a'), findsOneWidget);
-    expect(find.text('b'), findsOneWidget);
-    expect(find.text('c'), findsOneWidget);
+    // 詳細画面の表示内容を確認
+    // ※さすがにflutter公式が表示されるだろうという前提で、flutter/flutterを探す
+    expect(find.descendant(of: find.byType(DetailScreen), matching: find.text('flutter/flutter')), findsOneWidget);
 
     // push で遷移した場合は、遷移元の画面は残る
     expect(find.byType(SearchScreen), findsOneWidget);
 
-    // a ボタンをタップ
-    // スタックに積まれた最前面の画面のボタンをタップする(.hitTestable())
-    await tester.tap(find.text('a').hitTestable());
-    await tester.pumpAndSettle();
-    expect(find.text('${S.current.titleDetail}:/a'), findsOneWidget);
-
-    // b ボタンをタップ
-    // スタックに積まれた最前面の画面のボタンをタップする(.hitTestable())
-    await tester.tap(find.text('b').hitTestable());
-    await tester.pumpAndSettle();
-    expect(find.text('${S.current.titleDetail}:/a/b'), findsOneWidget);
-
-    // c ボタンをタップ
-    // スタックに積まれた最前面の画面のボタンをタップする(.hitTestable())
-    await tester.tap(find.text('c').hitTestable());
-    await tester.pumpAndSettle();
-    expect(find.text('${S.current.titleDetail}:/a/b/c'), findsOneWidget);
-    //// 詳細画面
-
-    // バックキーを押下
-    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await tester.pumpAndSettle();
-
-    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await tester.pumpAndSettle();
-
-    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await tester.pumpAndSettle();
-
+    // 戻るボタンをタップ
     await tester.sendKeyEvent(LogicalKeyboardKey.escape);
     await tester.pumpAndSettle();
 
     // 遷移後は、検索画面が表示される
     expect(find.byType(SearchScreen), findsOneWidget);
+    expect(find.byType(DetailScreen), findsNothing);
   });
 }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_engineer_codecheck/api/api_search.dart';
+import 'package:flutter_engineer_codecheck/api/model/github/search/item.dart';
+import 'package:flutter_engineer_codecheck/api/model/github/search/search_response.dart';
 import 'package:flutter_engineer_codecheck/generated/l10n.dart';
 import 'package:flutter_engineer_codecheck/navigation.dart';
 import 'package:flutter_engineer_codecheck/ui/screen/detail/detail_screen.dart';
@@ -7,18 +10,46 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-
 import 'detail_screen_test.mocks.dart';
 
 late MockNavigationHandler mockNavigation;
+late MockApiSearch mockApiSearch;
 
-@GenerateMocks([NavigationHandler])
+@GenerateMocks([NavigationHandler, ApiSearch])
 void main() {
   setUp(() {
     mockNavigation = MockNavigationHandler();
     when(mockNavigation.navigate(any, any)).thenAnswer((_) async {
       return;
     });
+
+    mockApiSearch = MockApiSearch();
+    when(mockApiSearch.search(any, any)).thenAnswer(
+      (_) async => const SearchResponse(
+        totalCount: 2,
+        incompleteResults: true,
+        items: [
+          Item(
+            name: 'a',
+            fullName: 'fullname-a',
+            stargazersCount: 1,
+            watchersCount: 1,
+            language: 'a',
+            forksCount: 1,
+            openIssuesCount: 1,
+          ),
+          Item(
+            name: 'b',
+            fullName: 'b',
+            stargazersCount: 1,
+            watchersCount: 1,
+            language: 'b',
+            forksCount: 1,
+            openIssuesCount: 1,
+          ),
+        ],
+      ),
+    );
   });
 
   testWidgets('DetailScreen', (WidgetTester tester) async {
@@ -26,6 +57,7 @@ void main() {
       ProviderScope(
         overrides: [
           pushNavigationHandlerProvider.overrideWithValue(mockNavigation),
+          apiSearchProvider.overrideWithValue(mockApiSearch),
         ],
         child: MaterialApp(
           localizationsDelegates: const [
@@ -39,12 +71,9 @@ void main() {
         ),
       ),
     );
-    
-    // // 表示内容確認
-    // expect(find.text('${S.current.titleDetail}:'), findsOneWidget);
-    // expect(find.text('a'), findsOneWidget);
-    // expect(find.text('b'), findsOneWidget);
-    // expect(find.text('c'), findsOneWidget);
+
+    // 空の画面が表示されることを確認
+    expect(find.byType(DetailScreen), findsOneWidget);
 
     // // ボタン確認
     // await tester.tap(find.text('a'));
