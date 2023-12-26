@@ -40,7 +40,10 @@ class SearchResultList extends HookConsumerWidget {
           itemCount: itemCount + (hasNext ? 1 : 0),
           itemBuilder: (context, index) {
             if (!hasNext || index < itemCount) {
-              return SearchResultListItem(searchSummary: items[index]);
+              return SearchResultListItem(
+                searchSummary: items[index],
+                index: index,
+              );
             }
             return const AppPadding(child: Center(child: AppLoading()));
           },

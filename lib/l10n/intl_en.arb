@@ -2,5 +2,10 @@
     "@@locale": "en",
     "titleSearch": "Search Screen",
     "titleDetail": "Detail Screen",
-    "hintSearch": "Enter search word"
+    "hintSearch": "Enter search word",
+    "detailBodyLaunguage": "Launguage",
+    "detailBodyStars": "Stars",
+    "detailBodyWatchers": "Watchers",
+    "detailBodyForks": "Forks",
+    "detailBodyIssues": "Issues"
 }

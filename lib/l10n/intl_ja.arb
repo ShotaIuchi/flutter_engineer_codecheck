@@ -2,5 +2,10 @@
     "@@locale": "ja",
     "titleSearch": "検索画面",
     "titleDetail": "詳細画面",
-    "hintSearch": "検索ワードを入力してください"
+    "hintSearch": "検索ワードを入力してください",
+    "detailBodyLaunguage": "言語",
+    "detailBodyStars": "スター",
+    "detailBodyWatchers": "ウォッチャー",
+    "detailBodyForks": "フォーク",
+    "detailBodyIssues": "イシュー"
 }
