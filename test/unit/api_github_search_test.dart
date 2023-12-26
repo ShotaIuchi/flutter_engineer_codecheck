@@ -75,6 +75,11 @@ void main() {
                       repoName: e.name,
                       fullName: e.fullName,
                       imageUrl: e.owner!.avatarUrl,
+                      language: e.language ?? '',
+                      stargazersCount: e.stargazersCount,
+                      watchersCount: e.watchersCount,
+                      forksCount: e.forksCount,
+                      openIssuesCount: e.openIssuesCount,
                     ),
                   )
                   .toList(),

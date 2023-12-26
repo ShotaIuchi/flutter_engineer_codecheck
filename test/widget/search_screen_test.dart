@@ -171,6 +171,11 @@ void main() {
                   fullName: 'a',
                   imageUrl:
                       'https://avatars.githubusercontent.com/u/1687248?v=4',
+                  language: 'a',
+                  stargazersCount: 1,
+                  watchersCount: 1,
+                  forksCount: 1,
+                  openIssuesCount: 1,
                 ),
                 SearchSummary(
                   ownerName: 'b',
@@ -178,6 +183,11 @@ void main() {
                   fullName: 'b',
                   imageUrl:
                       'https://avatars.githubusercontent.com/u/1687248?v=4',
+                  language: 'b',
+                  stargazersCount: 2,
+                  watchersCount: 2,
+                  forksCount: 2,
+                  openIssuesCount: 2,
                 ),
               ],
             ),
