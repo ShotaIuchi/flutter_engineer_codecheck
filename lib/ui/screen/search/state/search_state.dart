@@ -59,5 +59,10 @@ class SearchSummary with _$SearchSummary {
     required String repoName,
     required String fullName,
     required String imageUrl,
+    required String language,
+    required int stargazersCount,
+    required int watchersCount,
+    required int forksCount,
+    required int openIssuesCount,
   }) = _SearchSummary;
 }

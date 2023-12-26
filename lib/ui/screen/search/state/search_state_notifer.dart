@@ -109,6 +109,11 @@ class SearchStateNotifer extends StateNotifier<SearchState> {
                       repoName: item.name,
                       fullName: item.fullName,
                       imageUrl: item.owner?.avatarUrl ?? '',
+                      language: item.language ?? '',
+                      stargazersCount: item.stargazersCount,
+                      watchersCount: item.watchersCount,
+                      forksCount: item.forksCount,
+                      openIssuesCount: item.openIssuesCount,
                     ),
                   )
                   .toList(),

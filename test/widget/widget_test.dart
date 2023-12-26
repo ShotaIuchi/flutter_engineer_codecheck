@@ -54,7 +54,13 @@ void main() {
           repoName: 'a',
           fullName: 'a',
           imageUrl: 'a',
+          language: 'a',
+          stargazersCount: 1,
+          watchersCount: 1,
+          forksCount: 1,
+          openIssuesCount: 1,
         ),
+        index: 0,
       ),
     ]) {
       Logger().i('起動テスト::widget: $widget');
